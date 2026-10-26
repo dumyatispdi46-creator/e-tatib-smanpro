@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>E-Tatib SMAN 1 Pronojiwo</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0b5cab"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="E-Tatib"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html,body{margin:0;height:100%;background:#0b5cab;font-family:system-ui,sans-serif}
+iframe{position:fixed;left:0;right:0;bottom:0;top:env(safe-area-inset-top,0px);width:100%;height:calc(100% - env(safe-area-inset-top,0px));border:0;background:#f1f6fb}
+#ld,#off{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,#083f78,#0b5cab);z-index:2;text-align:center;padding:20px}
+#ld img,#off img{width:96px;margin-bottom:12px}#off{display:none;z-index:3}button{margin-top:14px;padding:10px 20px;border:0;border-radius:10px;background:#f5b301;font-weight:700}</style></head><body>
+<div id="ld"><img src="icon-192.png"><b>Tatib SMAN 1 Pronojiwo</b><small>Memuat aplikasi…</small></div>
+<div id="off"><img src="icon-192.png"><b>Tidak ada koneksi internet</b><small>Aplikasi membutuhkan internet untuk membuka data.</small><button onclick="location.reload()">Coba lagi</button></div>
+<iframe id="f" title="Tatib" allow="clipboard-write; fullscreen"></iframe>
+<script>
+// GANTI dengan URL Web App Apps Script Anda (berakhiran /exec)
+const APP_URL= 'https://script.google.com/macros/s/AKfycbxotUUc-6w1Y9GARltmFYMXNueTkaxs7lVFOYO-bCRFWiCoKTRCo6IayNO8pbiMiYU/exec';
+const f=document.getElementById('f'),ld=document.getElementById('ld'),off=document.getElementById('off');
+function open_(){if(!navigator.onLine){off.style.display='flex';return}off.style.display='none';if(!f.src)f.src=APP_URL}
+f.onload=()=>ld.style.display='none';
+addEventListener('online',open_);addEventListener('offline',()=>off.style.display='flex');
+open_();setTimeout(()=>ld.style.display='none',8000);
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));
+</script></body></html>
